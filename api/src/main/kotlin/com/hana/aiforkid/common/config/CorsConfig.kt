@@ -18,7 +18,6 @@ class CorsConfig : WebMvcConfigurer {
                 HttpMethod.PUT.toString(),
                 HttpMethod.PATCH.toString(),
                 HttpMethod.DELETE.toString())
-            .allowCredentials(true)
             .maxAge(3600)
     }
 
