@@ -50,6 +50,23 @@ jobs:
       - name: docker Hub push
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/boai:server
 
+      - name: Get Public IP
+        id: publicip
+        run: |
+          response=$(curl -s canhazip.com)
+          echo "ip='$response'" >> $GITHUB_OUTPUT
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Add GitHub IP to AWS
+        run: |
+          aws ec2 authorize-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port ${{ secrets.PORT }} --cidr ${{ steps.publicip.outputs.ip  }}/32
+
       - name: Deploy with push
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -58,6 +75,7 @@ jobs:
           key: ${{ secrets.KEY_PAIR }}
           port: ${{ secrets.PORT }}
           script: |
+            
             docker -v
             sudo docker stop boai-server || true
             sudo docker container prune -f
@@ -67,3 +85,7 @@ jobs:
             -e TZ=Asia/Seoul \
             -p 8080:8080 --name boai-server \
             ${{ secrets.DOCKERHUB_USERNAME }}/boai:server
+
+      - name: Remove IP FROM security group
+        run: |
+          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port ${{ secrets.PORT }} --cidr ${{ steps.publicip.outputs.ip  }}/32
