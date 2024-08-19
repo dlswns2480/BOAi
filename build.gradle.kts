@@ -6,6 +6,8 @@ plugins {
     id("org.springframework.boot") version "3.3.2"
     id("io.spring.dependency-management") version "1.1.6"
     kotlin("plugin.jpa") version "1.9.24"
+    kotlin("kapt") version "1.9.21"
+
 }
 
 repositories {
@@ -23,7 +25,7 @@ tasks {
 
 subprojects {
     apply(plugin = "kotlin")
-//    apply(plugin = "kotlin-kapt")
+    apply(plugin = "kotlin-kapt")
 
 
     group = "com.hana"
