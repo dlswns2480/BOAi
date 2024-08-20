@@ -18,7 +18,7 @@ class Child(
     val name: String,
 
     @Column(name = "birthDate")
-    val birthDate: LocalDateTime,
+    val birthDate: LocalDate,
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
@@ -34,7 +34,7 @@ class Child(
         fun of(
             parentId: Long,
             name: String,
-            birthDate: LocalDateTime,
+            birthDate: LocalDate,
             gender: Gender,
             weight: Double,
             height: Int
