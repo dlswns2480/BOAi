@@ -26,6 +26,10 @@ dependencies {
     testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
     testFixturesImplementation("org.testcontainers:testcontainers:1.19.7")
     testFixturesImplementation("org.testcontainers:mysql:1.19.7")
+    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+
 }
 
 tasks {
