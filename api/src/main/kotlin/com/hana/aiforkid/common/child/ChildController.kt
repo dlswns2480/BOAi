@@ -1,5 +1,6 @@
 package com.hana.aiforkid.common.child
 
+import com.hana.aiforkid.child.application.ChildService
 import com.hana.aiforkid.common.child.dto.request.ApiAddChildRequest
 import com.hana.aiforkid.common.child.dto.request.toDto
 import com.hana.aiforkid.parent.application.ParentService
@@ -15,19 +16,19 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/v1/child")
 class ChildController(
-    private val parentService: ParentService
+    private val childService: ChildService
 ) {
     @PostMapping
     @Operation(summary = "우리 아이 추가 API")
     fun addChild(
         @RequestBody request: ApiAddChildRequest
     ): ResponseEntity<AddChildResponse> {
-        return ResponseEntity.ok(parentService.addChild(request.toDto()))
+        return ResponseEntity.ok(childService.addChild(request.toDto()))
     }
 
     @GetMapping
     @Operation(summary = "우리 아이 리스트 조회 API")
     fun getChildren(): ResponseEntity<ChildResponse> {
-        return ResponseEntity.ok(parentService.getChildren())
+        return ResponseEntity.ok(childService.getChildren())
     }
 }
