@@ -1,6 +1,5 @@
 package com.hana.aiforkid.parent.dto.request
 
-import com.fasterxml.jackson.annotation.JsonFormat
 import com.hana.aiforkid.parent.domain.Gender
 import java.time.LocalDateTime
 

@@ -44,6 +44,8 @@ class ParentService(
         )
         val savedChild = childPort.persist(child)
         return AddChildResponse(
+            childId = savedChild.id,
+            name = savedChild.name,
             birthDate = savedChild.birthDate.format(formatter),
             gender = savedChild.gender.description,
             weight = savedChild.weight,
@@ -56,6 +58,7 @@ class ParentService(
         val children = childPort.loadAll()
         val result = children.map {
             ChildResult(
+                childId = it.id,
                 name = it.name,
                 birthDate = it.birthDate.format(DateFormatter.getFormatter()),
                 gender = it.gender.description,
