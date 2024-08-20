@@ -19,6 +19,18 @@ class CorsConfig : WebMvcConfigurer {
                 HttpMethod.PATCH.toString(),
                 HttpMethod.DELETE.toString())
             .maxAge(3600)
+
+        registry.addMapping("/swagger-ui/**")
+                .allowedOrigins("*") // You can specify your allowed origins here
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+
+        registry.addMapping("/v3/api-docs/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
+
+        registry.addMapping("/swagger-resources/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }
 
 }
