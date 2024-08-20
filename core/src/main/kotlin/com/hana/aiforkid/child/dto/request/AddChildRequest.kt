@@ -1,4 +1,4 @@
-package com.hana.aiforkid.parent.dto.request
+package com.hana.aiforkid.child.dto.request
 
 import com.hana.aiforkid.parent.domain.Gender
 import java.time.LocalDate

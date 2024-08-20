@@ -1,4 +1,4 @@
-package com.hana.aiforkid.parent.dto.respoonse
+package com.hana.aiforkid.child.dto.respoonse
 
 data class ChildResult(
     val childId: Long,

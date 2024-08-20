@@ -1,5 +1,6 @@
 package com.hana.aiforkid.child.domain
 
+import com.hana.aiforkid.common.entity.BaseEntity
 import com.hana.aiforkid.parent.domain.Gender
 import jakarta.persistence.*
 import java.time.LocalDate
@@ -29,7 +30,7 @@ class Child(
 
     @Column(name = "height")
     val height: Int
-) {
+) : BaseEntity() {
     companion object {
         fun of(
             parentId: Long,

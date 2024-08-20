@@ -2,7 +2,7 @@ package com.hana.aiforkid.common.child.dto.request
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.hana.aiforkid.parent.domain.Gender
-import com.hana.aiforkid.parent.dto.request.AddChildRequest
+import com.hana.aiforkid.child.dto.request.AddChildRequest
 import io.swagger.v3.oas.annotations.media.Schema
 import java.time.LocalDate
 import java.time.LocalDateTime
