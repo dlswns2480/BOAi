@@ -9,6 +9,7 @@ import com.hana.aiforkid.parent.dto.request.AddChildRequest
 import com.hana.aiforkid.parent.dto.request.RegisterParentRequest
 import com.hana.aiforkid.parent.dto.respoonse.AddChildResponse
 import com.hana.aiforkid.parent.dto.respoonse.ChildResponse
+import com.hana.aiforkid.parent.dto.respoonse.ChildResult
 import com.hana.aiforkid.parent.dto.respoonse.RegisterParentResponse
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -51,10 +52,10 @@ class ParentService(
     }
 
 
-    fun getChildren(): List<ChildResponse> {
+    fun getChildren(): ChildResponse {
         val children = childPort.loadAll()
-        return children.map {
-            ChildResponse(
+        val result = children.map {
+            ChildResult(
                 name = it.name,
                 birthDate = it.birthDate.format(DateFormatter.getFormatter()),
                 gender = it.gender.description,
@@ -62,6 +63,7 @@ class ParentService(
                 height = it.height
             )
         }
+        return ChildResponse(child = result)
     }
 
 

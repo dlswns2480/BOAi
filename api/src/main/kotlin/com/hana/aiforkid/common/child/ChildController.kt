@@ -3,9 +3,9 @@ package com.hana.aiforkid.common.child
 import com.hana.aiforkid.common.child.dto.request.ApiAddChildRequest
 import com.hana.aiforkid.common.child.dto.request.toDto
 import com.hana.aiforkid.parent.application.ParentService
-import com.hana.aiforkid.parent.dto.request.AddChildRequest
 import com.hana.aiforkid.parent.dto.respoonse.AddChildResponse
 import com.hana.aiforkid.parent.dto.respoonse.ChildResponse
+import com.hana.aiforkid.parent.dto.respoonse.ChildResult
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
@@ -27,7 +27,7 @@ class ChildController(
 
     @GetMapping
     @Operation(summary = "우리 아이 리스트 조회 API")
-    fun getChildren(): ResponseEntity<List<ChildResponse>> {
+    fun getChildren(): ResponseEntity<ChildResponse> {
         return ResponseEntity.ok(parentService.getChildren())
     }
 }
