@@ -13,10 +13,16 @@ class Video(
     @Column(name = "id")
     val id: Long = 0L,
 
+    @Column(name = "child_id")
+    val childId: Long,
+
     @Column(name = "title")
-    val title: String,
+    var title: String,
 
     @Column(name = "video_path")
     val videoPath: String
 ) {
+    fun insertTitle(title: String) {
+        this.title = title
+    }
 }

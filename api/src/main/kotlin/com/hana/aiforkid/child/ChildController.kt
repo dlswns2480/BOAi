@@ -1,10 +1,10 @@
-package com.hana.aiforkid.common.child
+package com.hana.aiforkid.child
 
 import com.hana.aiforkid.child.application.ChildService
 import com.hana.aiforkid.child.domain.ChildAbility
 import com.hana.aiforkid.child.exception.ChildErrorCode
-import com.hana.aiforkid.common.child.dto.request.ApiAddChildRequest
-import com.hana.aiforkid.common.child.dto.request.toDto
+import com.hana.aiforkid.child.dto.request.ApiAddChildRequest
+import com.hana.aiforkid.child.dto.request.toDto
 import com.hana.aiforkid.common.exception.ErrorOperation
 import com.hana.aiforkid.child.dto.respoonse.AddChildResponse
 import com.hana.aiforkid.child.dto.respoonse.ChildResponse

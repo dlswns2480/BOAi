@@ -1,4 +1,4 @@
-package com.hana.aiforkid.common.child.dto.request
+package com.hana.aiforkid.child.dto.request
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.hana.aiforkid.parent.domain.Gender
